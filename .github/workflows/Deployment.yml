@@ -6,7 +6,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Run script with secret
-        run: echo ${{ secrets.MY_SECRET }}
       - name: echo something
         run: echo 'webhook already trigger'
