@@ -4,6 +4,7 @@ on: repository_dispatch
 
 jobs:
   deploy:
-    runs-on: centos-latest
+    runs-on: ubuntu-latest
     steps:
-      - run: echo 'webhook already trigger'
+      - name: Run script with secret
+        run: echo ${{ secrets.MY_SECRET }}
