@@ -1,8 +1,6 @@
 name: Deployment
 
-on:
-  repository_dispatch:
-    types: [push, pushes]
+on: repository_dispatch
 
 jobs:
   deploy:
