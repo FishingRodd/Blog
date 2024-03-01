@@ -1,0 +1,11 @@
+name: Deployment
+
+on:
+  repository_dispatch:
+    types: [push, pushes]
+
+jobs:
+  deploy:
+    runs-on: centos-latest
+    steps:
+      - run: echo 'webhook already trigger'
