@@ -11,9 +11,12 @@ jobs:
         with:
           ref: main
           ssh-key: ${{ secrets.REPOSITORY_PRIVATEKEY }}
-          # submodules: 'recursive'
+          # submodules: recursive
+          # persist-credentials: false
       - name: Initialize and update submodules
         run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< "${{ secrets.REPOSITORY_PRIVATEKEY }}";
           # 初始化子模块
           git submodule init
           # 更新子模块到最新提交
