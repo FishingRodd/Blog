@@ -22,6 +22,16 @@ jobs:
           npx hexo generate
         env:
           CI: true
+      - name: test1
+        run: |
+          echo $REMOTE_HOST
+          echo $REMOTE_USER
+          echo $TARGET
+      - name: test2
+        run: |
+          echo ${{REMOTE_HOST}}
+          echo ${{REMOTE_USER}}
+          echo ${{TARGET}}
       - name: Deploy
         uses: easingthemes/ssh-deploy@v2.0.7
         env:
@@ -31,10 +41,4 @@ jobs:
           REMOTE_HOST: $REMOTE_HOST
           REMOTE_USER: $REMOTE_USER
           TARGET: $TARGET
-      - name: test
-        run: |
-          echo $REMOTE_HOST
-          echo $REMOTE_USER
-          echo $TARGET
-          cd ~/.ssh && cat id_rsa.pub >> authorized_keys
         
