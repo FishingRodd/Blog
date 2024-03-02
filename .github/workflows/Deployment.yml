@@ -22,10 +22,11 @@ jobs:
           git submodule init
           # 更新子模块到最新提交
           git submodule update --recursive --remote
-      - name: Restore file modification time
-        run: |
-          cd source/_posts/
-          git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
+      # 修复"GIT仓库clone造成的文件创建和修改时间被调整为部署时间"的脚本
+      # - name: Restore file modification time
+      #   run: |
+      #     cd source/_posts/
+      #     git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
       - name: npm env
         run: npm install
         env:
