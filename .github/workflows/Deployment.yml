@@ -29,7 +29,12 @@ jobs:
         env:
           CI: true
       - name: Deploy
-        run: |
-          pwd
-          ls
+        uses: easingthemes/ssh-deploy@v5.0.3
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ECS_PRIVATEKEY }}
+          ARGS: "-avz --delete"
+          SOURCE: "public/"
+          REMOTE_HOST: $REMOTE_HOST
+          REMOTE_USER: $REMOTE_USER
+          TARGET: $TARGET
         
