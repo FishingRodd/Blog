@@ -10,12 +10,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: Initialize and update submodules
-        run: |
-          # 初始化子模块
-          git submodule init
-          # 更新子模块，获得最新文档
-          git submodule update --recursive --remote
+          submodules: true
+      # - name: Initialize and update submodules
+      #   run: |
+      #     # 初始化子模块
+      #     git submodule init
+      #     # 更新子模块，获得最新文档
+      #     git submodule update --recursive --remote
       - name: npm env
         run: npm install
         env:
