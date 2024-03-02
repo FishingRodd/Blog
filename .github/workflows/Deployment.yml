@@ -11,6 +11,7 @@ jobs:
         with:
           ref: main
           ssh-key: ${{ secrets.REPOSITORY_PRIVATEKEY }}
+          fetch-depth: 0
           # submodules: recursive
           # persist-credentials: false
       - name: Initialize and update submodules
@@ -21,6 +22,9 @@ jobs:
           git submodule init
           # 更新子模块到最新提交
           git submodule update --recursive --remote
+      - name: Restore file modification time
+        run: |
+          find source/_posts -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
       - name: npm env
         run: npm install
         env:
