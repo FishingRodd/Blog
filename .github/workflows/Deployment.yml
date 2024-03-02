@@ -11,7 +11,13 @@ jobs:
         with:
           ref: main
           ssh-key: ${{ secrets.REPOSITORY_PRIVATEKEY }}
-          submodules: true
+          submodules: 'recursive'
+      # - name: Initialize and update submodules
+      #   run: |
+      #     # 初始化子模块
+      #     git submodule init
+      #     # 更新子模块到最新提交
+      #     git submodule update --recursive --remote
       - name: npm env
         run: npm install
         env:
