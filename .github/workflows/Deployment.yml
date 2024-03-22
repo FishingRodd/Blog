@@ -11,6 +11,7 @@ jobs:
         with:
           ref: main
           ssh-key: ${{ secrets.REPOSITORY_PRIVATEKEY }}
+          fetch-depth: 0
           # submodules: recursive
           # persist-credentials: false
       - name: Initialize and update submodules
@@ -21,6 +22,11 @@ jobs:
           git submodule init
           # 更新子模块到最新提交
           git submodule update --recursive --remote
+      # 修复"GIT仓库clone造成的文件创建和修改时间被调整为部署时间"的脚本
+      # - name: Restore file modification time
+      #   run: |
+      #     cd source/_posts/
+      #     git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
       - name: npm env
         run: npm install
         env:
@@ -35,7 +41,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v3.0.1
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ECS_PRIVATEKEY }}
-          # ARGS: "-avz --delete"
+          ARGS: "-avz --delete"
           SOURCE: "public/"
           REMOTE_HOST: ${{ vars.REMOTE_HOST }}
           REMOTE_USER: ${{ vars.REMOTE_USER }}
