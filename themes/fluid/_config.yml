@@ -477,7 +477,7 @@ footer:
     # ICP证号
     icp_text: 粤ICP备2024203562号
     # 公安备案号，不填则只显示ICP
-    police_text: 京公网安备8888号
+    police_text: 粤公网安备44030002002785号
     # 公安备案的编号，用于URL跳转查询
     police_code: 8888
     # 公安备案的图片. 为空时不显示备案图片
