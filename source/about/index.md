@@ -19,3 +19,5 @@ date: 2024-02-28 17:42:13
 后台采用Vue3&TypeScript-Vben框架完成前端部分开发，Python3-DjangoRestFramework框架完成后端部分开发，使用MySQL数据库存储。
 整个项目遵循敏捷开发思路，通过GithubActions持续构建与部署。
 笔记内容保存至Github子仓库，通过push触发文档子仓库的trigger，通知主仓库完成指定部署工作流程。
+
+目前整体应用还存在优化空间，挖坑待填：Celery异步文档IO任务、百度统计API接入与工作台图表化、环境变量&配置管理etcd/confd、基础资源监控
