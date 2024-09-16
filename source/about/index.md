@@ -17,10 +17,20 @@ date: 2024-02-28 17:42:13
 # 关于网站
 博客部署在阿里云服务器，采用Hexo&Fluid搭建，代码分离为了主仓库（代码仓库）、子仓库（文档仓库）放置在了Github。
 后台采用Vue3&TypeScript-Vben框架完成前端部分开发，Python3-DjangoRestFramework框架完成后端部分开发，使用MySQL数据库存储。
-整个项目遵循敏捷开发思路，通过GithubActions持续构建与部署。接入了百度API、GithubAPI
+整个项目遵循敏捷开发思路，通过GithubActions持续构建与部署。目前接入了阿里云OpenAPI、百度API、GithubAPI、和风天气。
 笔记内容保存至Github子仓库，通过push触发文档子仓库的trigger，通知主仓库完成指定部署工作流程。
 
-![后台工作台1](https://www.fishingrodd.cn/img/demo1.png)
-![后台工作台2](https://www.fishingrodd.cn/img/demo2.png)
+
+
+## 后台系统
+
+![后台PC工作台-阿里云OpenAPI、百度统计API、和风天气API接入](https://www.fishingrodd.cn/img/demo1.png)
+![后台PC工作台 - 最近访问动态](https://www.fishingrodd.cn/img/demo2.png)
+
+![移动端PC工作台](https://www.fishingrodd.cn/img/demo3.jpg)
+
+
+
+## todo
 
 目前整体应用还存在优化空间，挖坑待填：Celery异步文档IO任务、环境变量&配置管理etcd/confd、基础资源监控
