@@ -33,4 +33,4 @@ date: 2024-02-28 17:42:13
 
 ## todo
 
-目前整体应用还存在优化空间，挖坑待填：Celery异步文档IO任务、环境变量&配置管理etcd/confd、基础资源监控
+目前整体应用还存在优化空间，挖坑待填：Celery异步文档IO任务、vben框架拦截器更新accessToken&refreshToken支持
