@@ -52,7 +52,7 @@ jobs:
           curl -L -k \
             -X POST \
             -H "Authorization: ${{ secrets.token }}" \
-            -d '{"HasSuccess": "true"}' \
+            -d '{"HasSuccess": "True"}' \
             https://blog.fishingrodd.cn/sse/workflow
       - name: Notify on failure
         if: failure()
@@ -60,6 +60,6 @@ jobs:
           curl -L -k \
             -X POST \
             -H "Authorization: ${{ secrets.token }}" \
-            -d '{"HasSuccess": "false"}' \
+            -d '{"HasSuccess": "False"}' \
             https://blog.fishingrodd.cn/sse/workflow
         
