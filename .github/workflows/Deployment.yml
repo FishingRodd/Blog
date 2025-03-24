@@ -49,7 +49,7 @@ jobs:
       - name: Notify on success
         if: success()
         run: |
-          curl -L \
+          curl -L -k \
             -X POST \
             -H "Authorization: token ${{ secrets.token }}" \
             -d '{"HasSuccess": "true"}' \
@@ -57,7 +57,7 @@ jobs:
       - name: Notify on failure
         if: failure()
         run: |
-          curl -L \
+          curl -L -k \
             -X POST \
             -H "Authorization: token ${{ secrets.token }}" \
             -d '{"HasSuccess": "false"}' \
