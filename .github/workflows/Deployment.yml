@@ -27,6 +27,14 @@ jobs:
       #   run: |
       #     cd source/_posts/
       #     git ls-files -z | while read -d '' path; do touch -d "$(git log -1 --format="@%ct" "$path")" "$path"; done
+      - name: Notify on processing
+        if: success()
+        run: |
+          curl -L -k \
+            -X POST \
+            -H "Authorization: ${{ secrets.token }}" \
+            --data-urlencode 'NowStatus=refresh' \
+            https://blog.fishingrodd.cn/sse/workflow
       - name: npm env
         run: npm install
         env:
@@ -52,7 +60,7 @@ jobs:
           curl -L -k \
             -X POST \
             -H "Authorization: ${{ secrets.token }}" \
-            --data-urlencode 'HasSuccess=True' \
+            --data-urlencode 'NowStatus=success' \
             https://blog.fishingrodd.cn/sse/workflow
       - name: Notify on failure
         if: failure()
@@ -60,6 +68,6 @@ jobs:
           curl -L -k \
             -X POST \
             -H "Authorization: ${{ secrets.token }}" \
-            --data-urlencode 'HasSuccess=True' \
+            --data-urlencode 'NowStatus=failed' \
             https://blog.fishingrodd.cn/sse/workflow
         
